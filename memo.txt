@@ -1,0 +1,9 @@
+OAuth Test Application ID
+{
+  "name": "ilheeTest2",
+  "reqId": "myReqId2",
+  "clientSecret": "abcdef2",
+  "scopes": ["user-profile-read", "gateway-update", "timeline-read", "tag", "rule-read", "service-read", "site-read"]
+}
+
+http://www.daliworks.net/#access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI1NTAzIiwiY2xpZW50SWQiOiJteVJlcUlkMiIsImlhdCI6MTQ4NzU1NjcyNSwiZXhwIjoxNDg3NTc4MzI1fQ.ocsNrjnZbwOTU29l6Ep7av3kteGvio2MAkhWoU6Pf40&token_type=Bearer
