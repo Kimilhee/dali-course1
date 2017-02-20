@@ -34,5 +34,5 @@ export default MODULE_NAME;
 require('./controller/main');
 require('./controller/login');
 require('./controller/secure');
-require('./controller/tabsCtrl');
+require('./controller/tabs');
 require('./directive/tabmenu');

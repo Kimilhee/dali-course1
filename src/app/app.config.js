@@ -17,6 +17,6 @@ export default function routing($stateProvider, $urlRouterProvider) {
         template: require('./templates/secure.html'),
         controller: 'SecureCtrl'
     });
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/main');
 }
 console.log('app.config');

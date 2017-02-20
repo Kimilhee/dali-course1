@@ -4,10 +4,11 @@
   "description": "A workflow for Angular made with Webpack",
   "scripts": {
     "build": "rimraf dist && webpack --bail --progress --profile",
+    "watch": "webpack --watch",
     "server": "webpack-dev-server --history-api-fallback --inline --progress",
     "test": "karma start",
     "test-watch": "karma start --auto-watch --no-single-run",
-    "start": "npm run server"
+    "start": "node src/server/el-server"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,13 @@
   "dependencies": {
     "angular": "^1.5.0",
     "angular-ui-bootstrap": "^2.5.0",
-    "angular-ui-router": "^0.4.2"
+    "angular-ui-router": "^0.4.2",
+    "body-parser": "^1.16.1",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.1",
+    "express": "^4.14.1",
+    "lodash": "^4.17.4",
+    "request": "^2.79.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.0",

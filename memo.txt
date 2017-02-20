@@ -7,3 +7,17 @@ OAuth Test Application ID
 }
 
 http://www.daliworks.net/#access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI1NTAzIiwiY2xpZW50SWQiOiJteVJlcUlkMiIsImlhdCI6MTQ4NzU1NjcyNSwiZXhwIjoxNDg3NTc4MzI1fQ.ocsNrjnZbwOTU29l6Ep7av3kteGvio2MAkhWoU6Pf40&token_type=Bearer
+
+
+
+You can use http interceptor
+Code looks like as follow
+
+$httpProvider.interceptors.push(function($q, $cookies) {
+  return {
+   'request': function(config) {
+        config.headers['Token'] = $cookies.loginTokenCookie;
+        return config;
+    }
+  };
+});
