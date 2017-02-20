@@ -1,24 +1,17 @@
 import angular from 'angular';
 
 import '../style/app.css';
+import uiRouter from 'angular-ui-router';
 import tabindex from 'angular-ui-bootstrap/src/tabindex';
 import tabs from 'angular-ui-bootstrap/src/tabs';
 
-import TabsCtrl from './tabsCtrl';
+import routing from './app.config';
 
 let app = () => {
   return {
     template: require('./app.html'),
     controller: 'AppCtrl',
     controllerAs: 'app'
-  }
-};
-
-let tabmenu = () => {
-  return {
-    template: require('./tabmenu.html'),
-    controller: 'TabsCtrl',
-    controllerAs: 'tabmenu'
   }
 };
 
@@ -30,11 +23,16 @@ class AppCtrl {
 
 const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, [tabindex, tabs])
+angular.module(MODULE_NAME, [uiRouter, tabindex, tabs])
+  .config(routing)
   .directive('app', app)
-  .directive('tabmenu', tabmenu)
   .controller('AppCtrl', AppCtrl)
-  .controller('TabsCtrl', TabsCtrl)
-  ;
+;
 
 export default MODULE_NAME;
+
+require('./controller/main');
+require('./controller/login');
+require('./controller/secure');
+require('./controller/tabsCtrl');
+require('./directive/tabmenu');
