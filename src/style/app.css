@@ -19,3 +19,7 @@ footer {
   text-align: center;
   font-size: 0.8em;
 }
+
+div.login {
+  width: 300px;
+}

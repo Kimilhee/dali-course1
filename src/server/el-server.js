@@ -4,8 +4,6 @@
 // config
 // ----------------------------------------------------------------------------------------------------
 var _ = require('lodash');
-
-var server;
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -29,24 +27,19 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, '../../dist')));
 
-// ----------------------------------------------------------------------------------------------------
-// routes
-// ----------------------------------------------------------------------------------------------------
-var whitelist = [
-    'https://api.thingplus.net',
-    // 'http://loc.pizza.12corp.com:23000',
-    // 'http://loc.spoon.12corp.com:23000'
-];
-var corsOptions = {
-    credentials: true,
-    origin: function(origin, callback) {
-        console.log('@origin=', origin);
-        var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
-        callback(null, originIsWhitelisted);
-    }
-};
+// var whitelist = [
+//     'https://api.thingplus.net',
+// ];
+// var corsOptions = {
+//     credentials: true,
+//     origin: function(origin, callback) {
+//         console.log('@origin=', origin);
+//         var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+//         callback(null, originIsWhitelisted);
+//     }
+// };
 
-// var corsOptions = {};
+var corsOptions = {};
 app.use(cors(corsOptions));
 
 var api = express.Router();
@@ -55,7 +48,6 @@ require('./router-main')(app, api);
 // ----------------------------------------------------------------------------------------------------
 
 var PORT = 8080;
-
-server = app.listen(PORT, function() {
+var server = app.listen(PORT, function() {
     console.log('server started to listen : port=' + PORT);
 });
