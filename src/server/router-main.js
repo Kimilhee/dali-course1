@@ -1,9 +1,10 @@
 'use strict';
 
-var tempertureController = require('./temperture-controller');
-var authController = require('./auth-controller');
+var authController = require('./controller/auth');
+var apiController = require('./controller/api');
+var tpapiController = require('./controller/tpapi');
 
-module.exports = function(app, api) {
+module.exports = function(app, api, tpapi) {
     console.log('I\'m main-router.js');
 
     app.route('/').get(function(req, res) {
@@ -13,8 +14,8 @@ module.exports = function(app, api) {
 
     app.route('/oauth').get(authController.oauth);
 
-    // 새로운 검색엔진.
-    api.route('/temperture')
-        .get(tempertureController.getTemperture);
-        // .post(tempertureController.newTemperture);
+    api.route('/sessioin/authorize').post(apiController.sessionAuthorize);
+
+    // /tpapi로 시작하는 모든 요청은 Think+ API로 forwarding
+    tpapi.route('/*', tpapiController.forward);
 };

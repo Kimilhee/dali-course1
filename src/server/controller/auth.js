@@ -4,7 +4,7 @@
 * OAuth 인증 모듈
 */
 
-const CONFIG = require('../common/config');
+const CONFIG = require('../../common/config');
 
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;  //
 var request = require('request');

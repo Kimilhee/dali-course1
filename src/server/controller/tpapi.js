@@ -5,7 +5,7 @@
 */
 var request = require('request');
 
-exports.getTemperture = function(req, res) {
+exports.forward = function(req, res) {
   console.log('getTemperture');
 
   var options = {
