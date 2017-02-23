@@ -1,3 +1,5 @@
+'use strict';
+
 import angular from 'angular';
 
 import '../style/app.css';
@@ -12,7 +14,7 @@ let app = () => {
     template: require('./app.html'),
     controller: 'AppCtrl',
     controllerAs: 'app'
-  }
+  };
 };
 
 class AppCtrl {
@@ -31,6 +33,7 @@ angular.module(MODULE_NAME, [uiRouter, tabindex, tabs])
 
 export default MODULE_NAME;
 
+require('./controller/sessionCheck');
 require('./controller/main');
 require('./controller/login');
 require('./controller/secure');

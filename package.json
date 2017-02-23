@@ -8,6 +8,7 @@
     "server": "webpack-dev-server --history-api-fallback --inline --progress",
     "test": "karma start",
     "test-watch": "karma start --auto-watch --no-single-run",
+    "go": "nodemon src/server/el-server",
     "start": "node src/server/el-server"
   },
   "repository": {
@@ -27,11 +28,13 @@
     "body-parser": "^1.16.1",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.1",
+    "ejs": "^2.5.6",
     "express": "^4.14.1",
     "lodash": "^4.17.4",
     "request": "^2.79.0"
   },
   "devDependencies": {
+    "nodemon": "^1.11.0",
     "angular-mocks": "^1.5.0",
     "autoprefixer": "^6.0.3",
     "babel-core": "^6.2.1",

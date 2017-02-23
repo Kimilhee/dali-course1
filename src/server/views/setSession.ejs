@@ -1,0 +1,8 @@
+<!doctype html>
+<script>
+  'use strict';
+  sessionStorage.SESSION_ID = '<%=sessionId%>';
+  console.log(sessionStorage.SESSION_ID);
+  // session키 있으니 메인으로 redirect.
+  window.location = '<%=mainUrl%>';
+</script>
