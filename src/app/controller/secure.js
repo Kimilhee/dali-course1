@@ -1,5 +1,6 @@
+'use strict';
 import angular from 'angular';
-import APP from '../app'
+import CONFIG from '../../common/config';
 
 class SecureCtrl {
     constructor() {
@@ -7,4 +8,4 @@ class SecureCtrl {
     }
 }
 
-angular.module(APP).controller('SecureCtrl', SecureCtrl)
+angular.module(CONFIG.APP).controller('SecureCtrl', SecureCtrl);

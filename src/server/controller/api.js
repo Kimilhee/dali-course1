@@ -5,29 +5,28 @@
 */
 
 var request = require('request');
+const CONFIG = require('../../common/config');
 
 exports.sessionAuthorize = function(req, res) {
   console.log('sessionAuthorize');
 
   var accessToken = req.body.sessionId;
   console.log('@accessToken=', accessToken);
+
   var options = {
-      method: 'GET',
-      url: 'https://api.testyh.thingbine.com/gateways',
+      url: CONFIG.TPAPI_HOST + '/v1/gateways',
       headers: {
         'User-Agent': 'request',
         'authorization': 'Bearer ' + accessToken, // jshint ignore:line
       }
   };
 
-  function callback(error, response, body) {
+  request.get(options, function(error, response, body) {
       console.log('@callback body=', body);
       if (!error && response.statusCode === 200) {
         res.json({result: 'OK'});
       } else {
         res.json({result: error});
       }
-  }
-
-  request(options, callback);
+  });
 };

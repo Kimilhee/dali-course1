@@ -1,7 +1,7 @@
 'use strict';
 
 import angular from 'angular';
-import APP from '../app';
+import CONFIG from '../../common/config';
 
 class SessionCheckCtrl {
     constructor($scope, $http, $state) {
@@ -28,4 +28,4 @@ class SessionCheckCtrl {
     }
 }
 
-angular.module(APP).controller('SessionCheckCtrl', SessionCheckCtrl);
+angular.module(CONFIG.APP).controller('SessionCheckCtrl', SessionCheckCtrl);

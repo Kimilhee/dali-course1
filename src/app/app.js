@@ -33,6 +33,7 @@ angular.module(MODULE_NAME, [uiRouter, tabindex, tabs])
 
 export default MODULE_NAME;
 
+require('./service/httpInterceptor');
 require('./controller/sessionCheck');
 require('./controller/main');
 require('./controller/login');

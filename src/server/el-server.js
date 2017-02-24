@@ -43,10 +43,8 @@ var corsOptions = {};
 app.use(cors(corsOptions));
 
 var api = express.Router();
-var tpapi = express.Router();
 app.use('/api', api);
-app.use('/tpapi', tpapi);
-require('./router-main')(app, api, tpapi);
+require('./router-main')(app, api);
 // ----------------------------------------------------------------------------------------------------
 
 var PORT = 8080;

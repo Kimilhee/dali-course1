@@ -3,30 +3,29 @@
 /**
 * 검색 메인 모듈
 */
+
+const CONFIG = require('../../common/config');
 var request = require('request');
 
 exports.forward = function(req, res) {
-  console.log('getTemperture');
+  console.log('forward');
 
+  var accessToken = req.headers['x-session-token'];
+  var tpapiUrl = CONFIG.TPAPI_HOST + req.url.substring(6);  // /tpapi 부분 제거
+  console.log('tpapiUrl=', tpapiUrl);
   var options = {
-      method: 'GET',
-      url: 'https://api.thingplus.net/v1/gateways/b827ebda7b2a/sensors/b827ebda7b2a-0-temp/series',
+      method: req.method,
+      url: CONFIG.TPAPI_HOST + '/v1/gateways',
       headers: {
         'User-Agent': 'request',
-        'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI1NTAzIiwiY2xpZW50SWQiOiJteVJlcUlkIiwiaWF0IjoxNDg3MTUxNDQ1LCJleHAiOjE0ODg0NDc0NDV9.83Af6MjgPm-0M-x1uotydIaYgLOA8511UqGUHEsyK9U', // jshint ignore:line
-      }
+        'authorization': 'Bearer ' + accessToken, // jshint ignore:line
+      },
   };
 
-  function callback(error, response, body) {
-      console.log('@callback body=', body);
-      if (!error && response.statusCode == 200) {
-        var info = JSON.parse(body);
-        res.json({result: info})
-      } else {
-        res.json({result: error})
-      }
+  if (req.method === 'POST' || req.method === 'PUT') {
+    options.form = req.body;
   }
 
-  request(options, callback);
-
+  console.log('@options=', options);
+  request(options).pipe(res);
 };

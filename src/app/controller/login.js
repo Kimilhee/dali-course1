@@ -1,7 +1,6 @@
 'use strict';
 
 import angular from 'angular';
-import APP from '../app';
 import CONFIG from '../../common/config';
 
 // var CLIENT_NAME = 'eltempName1';
@@ -19,4 +18,4 @@ class LoginCtrl {
     }
 }
 
-angular.module(APP).controller('LoginCtrl', LoginCtrl);
+angular.module(CONFIG.APP).controller('LoginCtrl', LoginCtrl);
