@@ -15,7 +15,7 @@ exports.forward = function(req, res) {
   console.log('tpapiUrl=', tpapiUrl);
   var options = {
       method: req.method,
-      url: CONFIG.TPAPI_HOST + '/v1/gateways',
+      url: tpapiUrl,
       headers: {
         'User-Agent': 'request',
         'authorization': 'Bearer ' + accessToken, // jshint ignore:line

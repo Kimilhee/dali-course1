@@ -30,11 +30,12 @@ class TabsCtrl {
 
   getRules($scope, $http) {
     console.log('getRules');
-    $http.get('/tpapi/v1/gateways').then(function(res) {
+    $http.get('/tpapi/v1/rules?filter[status]=activated').then(function(res) {
       console.log(`getRules status=${res.status} data=`, res.data);
       $scope.rulelist = res.data;
+      // $scope.rulelist = res.data.filter(rule => rule.status === 'activated');
       // console.log('rulelist=', );
-      $scope.rulelist[0].name += (tempCount++);
+      // $scope.trigerlist[0].name += (tempCount++);
     }).catch(common.errorFn);
   }
 }
