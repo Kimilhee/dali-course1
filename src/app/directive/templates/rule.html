@@ -1,0 +1,11 @@
+<div>
+  <div style="height:20px"></div>
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" ng-repeat="rule in rulelist" >
+      <uib-accordion-heading>
+        GW Name:{{rule.name}}  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+      </uib-accordion-heading>
+      Sensor list
+    </div>
+  </uib-accordion>
+<div>

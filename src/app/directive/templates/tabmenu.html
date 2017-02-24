@@ -1,7 +1,10 @@
 <div>
   <uib-tabset active="active">
-    <uib-tab index="$index" ng-repeat="tab in tabs" heading="{{tab.title}}" select="selected($index)">
-      {{tab.content}}
+    <uib-tab index="0" heading="Gateways" select="selected(0)">
+      <gateway gwlist="gwlist" ></gateway>
+    </uib-tab>
+    <uib-tab index="1" heading="Sensors" select="selected(1)">
+      <rule rulelist="rulelist" ></rule>
     </uib-tab>
   </uib-tabset>
 </div>
