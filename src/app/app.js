@@ -3,14 +3,19 @@
 import angular from 'angular';
 
 import '../style/app.css';
+import 'angularjs-slider/dist/rzslider.css';
+import '../style/slider.css';
+
 /*
 accordion alert buttons carousel collapse dateparser datepicker datepickerPopup debounce dropdown isClass modal multiMap
 pager pagination paging popover position progressbar rating stackedMap tabindex tabs timepicker tooltip typeahead
 */
 import uiRouter from 'angular-ui-router';
 import ngAnimate from 'angular-animate';
+import rzSlider from 'angularjs-slider/dist/rzslider';
 import tabindex from 'angular-ui-bootstrap/src/tabindex';
 import accordion from 'angular-ui-bootstrap/src/accordion';
+import buttons from 'angular-ui-bootstrap/src/buttons';
 import tabs from 'angular-ui-bootstrap/src/tabs';
 
 import routing from './app.config';
@@ -31,7 +36,7 @@ class AppCtrl {
 
 const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, [ngAnimate, uiRouter, tabindex, tabs, accordion])
+angular.module(MODULE_NAME, [ngAnimate, uiRouter, tabindex, tabs, accordion, buttons, rzSlider])
   .config(routing)
   .directive('app', app)
   .controller('AppCtrl', AppCtrl)
@@ -48,3 +53,8 @@ require('./controller/tabs');
 require('./directive/tabmenu');
 require('./directive/gateway');
 require('./directive/rule');
+require('./directive/makeRule');
+require('./directive/triggers');
+require('./directive/conditions');
+require('./directive/actions');
+require('./directive/emailSend');

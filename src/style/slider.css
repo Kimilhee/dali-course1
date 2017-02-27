@@ -1,0 +1,12 @@
+/* styles in src/style directory are applied to the whole page */
+.reverse-slider.rzslider .rz-bar {
+  background: #0db9f0;
+}
+
+.reverse-slider.rzslider .rz-selection {
+  background: #d8e0f3;
+}
+
+.tempertureDegree {
+  width: 70px;
+}

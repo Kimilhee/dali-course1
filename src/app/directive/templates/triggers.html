@@ -1,0 +1,41 @@
+<div>
+  <div style="height:20px"></div>
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" is-open="true" >
+      <uib-accordion-heading>
+        Trigger
+      </uib-accordion-heading>
+      <div>
+        <div>
+          <button ng-click="btnSelected('temperture')">
+            <img src="img/icon-temperature-big.png" alt="온도" />
+          </button>
+        </div>
+        <span>Gateway::Sensor!!</span>
+        <ul class="list-group" ng-show="selectedRule == 'temperture'" >
+          <li class="list-group-item active">온도 Trigger</li>
+          <li class="list-group-item">
+            <article>
+              <div class="btn-group">
+                <label class="btn btn-primary" ng-model="radioModel" ng-click="checkSliderKind('below')" uib-btn-radio="'below'">이상</label>
+                <label class="btn btn-primary" ng-model="radioModel" ng-click="checkSliderKind('above')" uib-btn-radio="'above'">이하</label>
+                <label class="btn btn-primary" ng-model="radioModel" ng-click="checkSliderKind('range')" uib-btn-radio="'range'">범위 내</label>
+                <label class="btn btn-primary" ng-model="radioModel" ng-click="checkSliderKind('reverse')" uib-btn-radio="'reverse'">범위 외</label>
+              </div>
+              <div style="margin: 20px">
+                지정온도: <input type="number" class='tempertureDegree' ng-model="tempSlider.minValue" />
+                <span ng-show="radioModel == 'below'">이하</span>
+                ~
+                <input type="number" class='tempertureDegree' ng-model="tempSlider.maxValue" />
+                <span ng-show="radioModel == 'above'">이상</span>
+                <span ng-show="radioModel == 'range'">사이 온도</span>
+                <span ng-show="radioModel == 'reverse'">밖의 온도</span>
+              </div>
+              <rzslider ng-class="{'reverse-slider': tempSlider.reverse}" rz-slider-model="tempSlider.minValue" rz-slider-high="tempSlider.maxValue" rz-slider-options="tempSlider.options"></rzslider>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </uib-accordion>
+<div>

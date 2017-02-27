@@ -6,7 +6,7 @@ import CONFIG from '../../common/config';
 
 let tempCount = 1;
 class TabsCtrl {
-  constructor($scope, $http) {
+  constructor($scope, $http, $timeout) {
     console.log('TabsCtrl constructor!');
 
     $scope.selected = (index) => {
@@ -17,6 +17,12 @@ class TabsCtrl {
         this.getRules($scope, $http);
       }
     };
+
+    // console.log('kkk');
+    // $timeout(function() {
+    //   console.log('xxxx');
+    //   $scope.selected(1);
+    // });
   }
 
   getGateways($scope, $http) {
@@ -36,6 +42,7 @@ class TabsCtrl {
       // $scope.rulelist = res.data.filter(rule => rule.status === 'activated');
       // console.log('rulelist=', );
       // $scope.trigerlist[0].name += (tempCount++);
+      $scope.$broadcast('rzSliderForceRender');
     }).catch(common.errorFn);
   }
 }
