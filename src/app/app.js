@@ -52,7 +52,7 @@ require('./controller/secure');
 require('./controller/tabs');
 require('./directive/tabmenu');
 require('./directive/gateway');
-require('./directive/rule');
+require('./directive/rules');
 require('./directive/makeRule');
 require('./directive/triggers');
 require('./directive/conditions');

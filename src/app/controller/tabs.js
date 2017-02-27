@@ -13,8 +13,14 @@ class TabsCtrl {
       console.log('tab selected #', index);
       if (index === 0) {
         this.getGateways($scope, $http);
-      } else {
+      } else if (index === 1) {
         this.getRules($scope, $http);
+      } else {
+
+        // rzSlider가 초기 표시가 잘 안되는 문제 해결용 코드.
+        $timeout(function() {
+          $scope.$broadcast('rzSliderForceRender');
+        });
       }
     };
 
@@ -42,7 +48,6 @@ class TabsCtrl {
       // $scope.rulelist = res.data.filter(rule => rule.status === 'activated');
       // console.log('rulelist=', );
       // $scope.trigerlist[0].name += (tempCount++);
-      $scope.$broadcast('rzSliderForceRender');
     }).catch(common.errorFn);
   }
 }

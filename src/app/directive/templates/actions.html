@@ -1,39 +1,3 @@
-<script type="text/ng-template" id="email-send.html">
-  <div id="nw-dwrs-param-box-actions-0-0" class="rule-agent-select-area col-xs-12 col-sm-10 col-md-10" >
-    <form class="rule-agent-params-list form-horizontal rule-agent-form ng-pristine ng-valid-validator ng-invalid ng-invalid-required" role="form" name="agentForm" step-data="stepData" user-info="userInfo" gateways="gateways" tags="tags" ns="ns" template-items="templateItems">
-      <div>
-        <div class="col-xs-12 col-sm-3 rule-agent-label">
-          <label>수신</label>
-          <div></div>
-        </div>
-
-        <div class="col-xs-12 col-sm-9">
-          <input name="email" class="form-control ng-pristine ng-valid ng-valid-validator ng-not-empty ng-touched" placeholder="수신자 이메일 주소" ng-model="param._inputValue">
-        </div>
-      </div>
-      <div>
-        <div class="col-xs-12 col-sm-3 rule-agent-label">
-          <label>제목</label>
-          <div></div>
-        </div>
-
-        <div class="col-xs-12 col-sm-9">
-          <input id="nw-dwaf-input-notemail-1" type="text" name="input" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" placeholder="이메일 제목" ng-model="param._inputValue" required="required">
-        </div>
-      </div>
-      <div>
-        <div class="col-xs-12 col-sm-3 rule-agent-label">
-          <label>본문</label>
-        </div>
-        <div class="col-xs-12 col-sm-9">
-          <textarea>
-          </textarea>
-        </div>
-      </div>
-    </form>
-  </div>
-</script>
-
 <div>
   <uib-accordion close-others="oneAtATime">
     <div uib-accordion-group class="panel-default" is-open="true" >
@@ -44,12 +8,10 @@
         <uib-tabset active="0">
           <uib-tab index="0" heading="이메일 보내기" select="actionSelected(0)">
             <email-send></email-send>
-            <!-- <div ng-include="email-send.html">
-            </div> -->
           </uib-tab>
           <uib-tab index="1" heading="SMS 보내기" active select="actionSelected(1)">
             <!-- <sms-send ></sms-send> -->
-            <div>공사중...</div>
+            <div style="height: 230px">공사중...</div>
           </uib-tab>
         </uib-tabset>
       </div>
