@@ -1,0 +1,47 @@
+<div>
+  <uib-accordion close-others="oneAtATime">
+    <div uib-accordion-group class="panel-default" is-open="true" >
+      <uib-accordion-heading>
+        규칙 정보
+      </uib-accordion-heading>
+      <div>
+        <div id="nw-dwrs-param-box-actions-0-0" style="margin: 30px; width: 500px;" class="rule-agent-select-area col-xs-12 col-sm-10 col-md-10" >
+          <form class="rule-agent-params-list form-horizontal rule-agent-form ng-pristine ng-valid-validator ng-invalid ng-invalid-required" role="form" name="agentForm" step-data="stepData" user-info="userInfo" gateways="gateways" tags="tags" ns="ns" template-items="templateItems">
+            <div style="height: 40px;" >
+              <div class="col-xs-12 col-sm-3 rule-agent-label">
+                <label>규칙 이름</label>
+                <div></div>
+              </div>
+
+              <div class="col-xs-12 col-sm-9">
+                <input name="ruleName" class="form-control ng-pristine ng-valid ng-valid-validator ng-not-empty ng-touched" placeholder="규칙 이름" ng-model="ruleInfo.name">
+              </div>
+            </div>
+            <div style="height: 40px;" >
+              <div class="col-xs-12 col-sm-3 rule-agent-label">
+                <label>상세 설명</label>
+                <div></div>
+              </div>
+
+              <div class="col-xs-12 col-sm-9">
+                <input type="text" name="ruleDesc" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" placeholder="이메일 제목" ng-model="ruleInfo.desc" >
+              </div>
+            </div>
+            <div style="height: 40px;" >
+              <div class="col-xs-12 col-sm-3 rule-agent-label">
+                <label>심각도</label>
+              </div>
+              <div class="col-xs-12 col-sm-9  text-left">
+                <div class="btn-group">
+                  <label class="btn btn-primary" ng-model="reportLevel" uib-btn-radio="'serious'">심각</label>
+                  <label class="btn btn-primary" ng-model="reportLevel" uib-btn-radio="'warning'">경고</label>
+                  <label class="btn btn-primary" ng-model="reportLevel" uib-btn-radio="'info'">정보</label>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </uib-accordion>
+<div>

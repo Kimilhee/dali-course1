@@ -17,21 +17,24 @@
           <li class="list-group-item">
             <article>
               <div class="btn-group">
-                <label class="btn btn-primary" ng-model="radioModel" ng-click="checkSliderKind('below')" uib-btn-radio="'below'">이상</label>
-                <label class="btn btn-primary" ng-model="radioModel" ng-click="checkSliderKind('above')" uib-btn-radio="'above'">이하</label>
-                <label class="btn btn-primary" ng-model="radioModel" ng-click="checkSliderKind('range')" uib-btn-radio="'range'">범위 내</label>
-                <label class="btn btn-primary" ng-model="radioModel" ng-click="checkSliderKind('reverse')" uib-btn-radio="'reverse'">범위 외</label>
+                <label class="btn btn-primary" ng-model="radioModel" ng-click="checkSliderKind('over')" uib-btn-radio="'over'">이상</label>
+                <label class="btn btn-primary" ng-model="radioModel" ng-click="checkSliderKind('under')" uib-btn-radio="'under'">이하</label>
+                <label class="btn btn-primary" ng-model="radioModel" ng-click="checkSliderKind('inRange')" uib-btn-radio="'inRange'">범위 내</label>
+                <label class="btn btn-primary" ng-model="radioModel" ng-click="checkSliderKind('outOfRange')" uib-btn-radio="'outOfRange'">범위 외</label>
+                {{radioModel}}
               </div>
+
               <div style="margin: 20px">
                 지정온도: <input type="number" class='tempertureDegree' ng-model="tempSlider.minValue" />
-                <span ng-show="radioModel == 'below'">이하</span>
+                <span ng-show="radioModel == 'under'">이하</span>
                 ~
                 <input type="number" class='tempertureDegree' ng-model="tempSlider.maxValue" />
-                <span ng-show="radioModel == 'above'">이상</span>
-                <span ng-show="radioModel == 'range'">사이 온도</span>
-                <span ng-show="radioModel == 'reverse'">밖의 온도</span>
+                <span ng-show="radioModel == 'over'">이상</span>
+                <span ng-show="radioModel == 'inRange'">사이 온도</span>
+                <span ng-show="radioModel == 'outOfRange'">밖의 온도</span>
               </div>
               <rzslider ng-class="{'reverse-slider': tempSlider.reverse}" rz-slider-model="tempSlider.minValue" rz-slider-high="tempSlider.maxValue" rz-slider-options="tempSlider.options"></rzslider>
+
             </article>
           </li>
         </ul>

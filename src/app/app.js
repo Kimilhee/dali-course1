@@ -58,3 +58,4 @@ require('./directive/triggers');
 require('./directive/conditions');
 require('./directive/actions');
 require('./directive/emailSend');
+require('./directive/ruleInput');

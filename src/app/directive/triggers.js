@@ -7,16 +7,71 @@ let triggers = () => {
   return {
     template: require('./templates/triggers.html'),
     scope: {
-      rulelist: '=',
+      ruleinfo: '=',
     },
     controller: function($scope, $timeout) {
+      console.log('$scope.ruleinfo=', $scope.ruleinfo);
       $scope.selectedRule = 'temperture';
+      $scope.ruleinfo.test = 123;
+
+      /*
+      {
+          "method": {
+            "name": "범위 외",
+            "id": "outOfRange",
+            "outOfRange": {
+              "from": 88,
+              "to": 99,
+              "target": {
+                "type": "gateway",
+                "id": "ab7c994605844c27ac2fc2d225f8f3f9",
+                "sensors": [
+                  "temperatureDaliworks-ab7c994605844c27ac2fc2d225f8f3f9"
+                ]
+              }
+            }
+          },
+      */
 
       $scope.btnSelected = (ruleKind) => $scope.selectedRule = ruleKind;
 
+      function newTempInfo(id, tempObj) {
+        let info = { id };
+        let rangeObj = {}
+
+        switch (id) {
+          case 'over':
+            rangeObj.degree = tempObj.minValue;
+            info.name = '이상';
+            break;
+          case 'under':
+            console.log('tempObj.maxValue=', tempObj.maxValue);
+            rangeObj.degree = tempObj.maxValue;
+            info.name = '이하';
+            break;
+          case 'inRange':
+            rangeObj.from = tempObj.minValue;
+            rangeObj.to = tempObj.maxValue;
+            info.name = '범위 내';
+            break;
+          case 'outOfRange':
+            rangeObj.from = tempObj.minValue;
+            rangeObj.to = tempObj.maxValue;
+            info.name = '범위 외';
+            break;
+          default:
+            console.log('잘못된 temp id 값!!!');
+        }
+
+        info[id] = rangeObj;
+
+        console.log('@info=', info);
+        return info;
+      }
+
       //Range slider config
       $scope.tempSlider = {
-          reverse: false,   // slider 범위를 뒤집는 옵션(내가 만든 거임.)
+          outOfRange: false,   // slider 범위를 뒤집는 옵션(내가 만든 거임.)
           minValue: 10,
           maxValue: 40,
           options: {
@@ -42,47 +97,58 @@ let triggers = () => {
           // translate
       };
 
-      $scope.$on('slideChanged', function(e) {
-        console.log('slideChanged@@');
-      });
-
       $scope.$on('slideEnded', function(e) {
-        // console.log('@e.targetScope.rzSliderModel=',e.targetScope.rzSliderModel);
-        // console.log('@e.targetScope.rzSliderHigh=',e.targetScope.rzSliderHigh);
-        // console.log('@$scope.radioModel=',$scope.radioModel);
-        if ($scope.radioModel === 'below' && e.targetScope.rzSliderModel > $scope.tempSlider.options.floor) {
+        console.log('@e.targetScope.rzSliderModel=',e.targetScope.rzSliderModel);
+        console.log('@e.targetScope.rzSliderHigh=',e.targetScope.rzSliderHigh);
+        console.log('@$scope.radioModel=',$scope.radioModel);
+        if ($scope.radioModel === 'under' && e.targetScope.rzSliderModel > $scope.tempSlider.options.floor) {
+          console.log('under->inRange');
           $timeout(function() {
-            $scope.radioModel = 'range'
-          })
+            $scope.radioModel = 'inRange';
+            console.log('under->inRange', $scope.radioModel);
+          });
         }
 
-        if ($scope.radioModel === 'above' && e.targetScope.rzSliderHigh < $scope.tempSlider.options.ceil) {
+        if ($scope.radioModel === 'over' && e.targetScope.rzSliderHigh < $scope.tempSlider.options.ceil) {
+          console.log('over->inRange');
           $timeout(function() {
-            $scope.radioModel = 'range'
-          })
+            $scope.radioModel = 'inRange';
+            console.log('over->inRange', $scope.radioModel);
+          });
         }
         console.log('slideEnded:', e);
+        $timeout(function() {
+          $scope.ruleinfo.tempInfo = newTempInfo($scope.radioModel, $scope.tempSlider);
+        });
       });
 
-      $scope.radioModel = 'range';
-      $scope.checkSliderKind = function(sliderKind) {
-        $scope.radioModel = sliderKind;
-        $scope.tempSlider.reverse = (sliderKind === 'reverse');
-        switch (sliderKind) {
-          case 'below':
-            // $scope.tempSlider.maxValue = $scope.tempSlider.minValue;
-            $scope.tempSlider.minValue = $scope.tempSlider.options.floor;
-            break;
-          case 'above':
+      $scope.radioModel = 'inRange';
+      $scope.ruleinfo.tempInfo = newTempInfo('inRange', $scope.tempSlider);
+
+      $scope.checkSliderKind = function(tempId) {
+        // console.log('@@@$scope.radioModel=', $scope.radioModel);
+        // $scope.ruleinfo.tempInfo.id = tempId;
+
+        $scope.tempSlider.reverse = (tempId === 'outOfRange');
+        switch (tempId) {
+          case 'over':
             // $scope.tempSlider.minValue = $scope.tempSlider.maxValue;
             $scope.tempSlider.maxValue = $scope.tempSlider.options.ceil;
             break;
-          case 'range':
+          case 'under':
+            // $scope.tempSlider.maxValue = $scope.tempSlider.minValue;
+            $scope.tempSlider.minValue = $scope.tempSlider.options.floor;
             break;
-          case 'reverse':
+          case 'inRange':
+            break;
+          case 'outOfRange':
             break;
           default:
+            console.log('잘못된 tempId 값!!');
         }
+
+        $scope.ruleinfo.tempInfo = newTempInfo(tempId, $scope.tempSlider);
+        $scope.radioModel = tempId;
         console.log('$scope.radioModel:', $scope.radioModel);
       };
 
