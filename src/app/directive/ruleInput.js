@@ -6,8 +6,11 @@ import CONFIG from '../../common/config';
 let ruleInput = () => {
   return {
     template: require('./templates/ruleInput.html'),
+    scope: {
+      rule: '='
+    },
     link: function(scope) {
-      scope.reportLevel = 'warning';
+      scope.rule.severity = 'warning';
     }
   };
 };

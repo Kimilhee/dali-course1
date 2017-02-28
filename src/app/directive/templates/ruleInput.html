@@ -14,7 +14,7 @@
               </div>
 
               <div class="col-xs-12 col-sm-9">
-                <input name="ruleName" class="form-control ng-pristine ng-valid ng-valid-validator ng-not-empty ng-touched" placeholder="규칙 이름" ng-model="ruleInfo.name">
+                <input name="ruleName" class="form-control ng-pristine ng-valid ng-valid-validator ng-not-empty ng-touched" placeholder="e.g. tempertureWatch" ng-model="rule.name">
               </div>
             </div>
             <div style="height: 40px;" >
@@ -24,7 +24,7 @@
               </div>
 
               <div class="col-xs-12 col-sm-9">
-                <input type="text" name="ruleDesc" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" placeholder="이메일 제목" ng-model="ruleInfo.desc" >
+                <input type="text" name="ruleDesc" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" placeholder="describe detail" ng-model="rule.desc" >
               </div>
             </div>
             <div style="height: 40px;" >
@@ -33,9 +33,9 @@
               </div>
               <div class="col-xs-12 col-sm-9  text-left">
                 <div class="btn-group">
-                  <label class="btn btn-primary" ng-model="reportLevel" uib-btn-radio="'serious'">심각</label>
-                  <label class="btn btn-primary" ng-model="reportLevel" uib-btn-radio="'warning'">경고</label>
-                  <label class="btn btn-primary" ng-model="reportLevel" uib-btn-radio="'info'">정보</label>
+                  <label class="btn btn-primary" ng-model="rule.severity" uib-btn-radio="'serious'">심각</label>
+                  <label class="btn btn-primary" ng-model="rule.severity" uib-btn-radio="'warning'">경고</label>
+                  <label class="btn btn-primary" ng-model="rule.severity" uib-btn-radio="'info'">정보</label>
                 </div>
               </div>
             </div>

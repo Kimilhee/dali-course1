@@ -9,6 +9,11 @@ class TabsCtrl {
   constructor($scope, $http, $timeout) {
     console.log('TabsCtrl constructor!');
 
+    $scope.active = 1;
+    $scope.gotab = (tabIndex) => {
+      $scope.active = tabIndex;
+    };
+
     $scope.selected = (index) => {
       console.log('tab selected #', index);
       if (index === 0) {

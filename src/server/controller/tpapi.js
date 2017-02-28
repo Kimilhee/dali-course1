@@ -23,7 +23,9 @@ exports.forward = function(req, res) {
   };
 
   if (req.method === 'POST' || req.method === 'PUT') {
-    options.form = req.body;
+    options.headers['Content-Type'] = 'application/json';
+    options.body = req.body;
+    options.json = true;
   }
 
   console.log('@options=', options);

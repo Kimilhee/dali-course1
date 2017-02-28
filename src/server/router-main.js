@@ -18,4 +18,5 @@ module.exports = function(app, api) {
 
     // /tpapi로 시작하는 모든 요청은 Think+ API로 forwarding
     app.route('/tpapi/*').get(tpapiController.forward);
+    app.route('/tpapi/*').post(tpapiController.forward);
 };

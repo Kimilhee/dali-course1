@@ -1,10 +1,13 @@
 <div>
-  <div style="height:20px">{{ruleinfo}}</div>
+  <div style="height:20px">
+  </div>
   <triggers ruleinfo="ruleinfo"></triggers>
   <conditions></conditions>
-  <actions></actions>
-  <rule-input></rule-input>
+  <actions send="ruleinfo.send" ></actions>
+  <rule-input rule="ruleinfo.rule"></rule-input>
   <div>
     <button type="button" style="width: 150px" class="btn btn-warning" ng-click="onSubmit()">완료</button>
+    <br>
+    {{ruleinfo}}
   </div>
 <div>

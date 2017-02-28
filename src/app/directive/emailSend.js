@@ -7,7 +7,7 @@ let emailSend = () => {
   return {
     template: require('./templates/emailSend.html'),
     scope: {
-      rulelist: '=',
+      email: '=',
     }
   };
 };

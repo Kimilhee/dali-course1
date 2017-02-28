@@ -7,7 +7,7 @@
       </div>
 
       <div class="col-xs-12 col-sm-9">
-        <input name="email" class="form-control ng-pristine ng-valid ng-valid-validator ng-not-empty ng-touched" placeholder="수신자 이메일 주소" ng-model="param._inputValue">
+        <input name="email" class="form-control ng-pristine ng-valid ng-valid-validator ng-not-empty ng-touched" placeholder="수신자 이메일 주소" ng-model="email.to">
       </div>
     </div>
     <div style="height: 40px;" >
@@ -17,7 +17,7 @@
       </div>
 
       <div class="col-xs-12 col-sm-9">
-        <input id="nw-dwaf-input-notemail-1" type="text" name="input" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" placeholder="이메일 제목" ng-model="param._inputValue" required="required">
+        <input id="nw-dwaf-input-notemail-1" type="text" name="input" class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" placeholder="이메일 제목" ng-model="email.subject" required="required">
       </div>
     </div>
     <div style="height: 40px;" >
@@ -25,9 +25,7 @@
         <label>본문</label>
       </div>
       <div class="col-xs-12 col-sm-9">
-        <textarea style="width: 320px; height: 100px;">
-          {{value}} {{triggerSensor}}@{{triggerGateway}} ({{triggerCondition}})
-        </textarea>
+        <textarea style="width: 320px; height: 100px;" ng-model="email.body"></textarea>
       </div>
     </div>
   </form>

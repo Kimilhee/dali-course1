@@ -7,7 +7,7 @@ let actions = () => {
   return {
     template: require('./templates/actions.html'),
     scope: {
-      rulelist: '=',
+      send: '=',
     }
   };
 };
